@@ -5,18 +5,13 @@ const rl = readline.createInterface({
    output: process.stdout 
 });
 
-// Rounds a number to the given index
-const RoundTo= (num, i) =>{
-    
-}
-
 // Getting user input
 rl.question("How many digits do you want to calculate Pi to? ", function(num){
     // Calls the function to calculate Pi
-    let pi = CalculatePi(num);
+    let Pi = CalculatePi(num);
 
     // Prints the result
-    console.log(`Pi to the ${num}th digit it ${pi}`);
+    console.log(`Pi to the ${num}th digit it ${Pi}`);
     rl.close();
 });
 
@@ -32,9 +27,12 @@ function CalculatePi(n){
         pi += x / (i + 2n);
         i += 2n;
     }
-    //console.log(pi / (10n ** 20n));
-    pi = pi.toFixed(n);
-    return pi;
+
+    // Converts to a string and cuts off at index +2 to include the 3
+    let pi_str =  pi.toString().substring(1, n);
+    // Adds the "."
+    pi_str = "3." + pi_str
+    return pi_str;
 }
 
 rl.on("close", function() {
